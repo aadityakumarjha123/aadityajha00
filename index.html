@@ -303,32 +303,41 @@
       <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
     </ul>
   </footer>
+
+<!-- 🔽 Your Firebase script starts after footer -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyAos3HZuf049LQETwGc2mO1rdErMI95J0",
+    apiKey: "AIzaSyAos3HZUfo49pLQEIwGc2mOlrdErMI95J0",
     authDomain: "aadityajha00.firebaseapp.com",
     projectId: "aadityajha00",
-    storageBucket: "aadityajha00.appspot.com",
+    storageBucket: "aadityajha00.firebasestorage.app",
     messagingSenderId: "953486639095",
     appId: "1:953486639095:web:0e23e9a917c4b6fd27f8f2"
   };
 
   const app = initializeApp(firebaseConfig);
-</script>
-import { initializeApp } from "firebase/app";
-const firebaseConfig = {
-  apiKey: "AIzaSyAos3HZUfo49pLQEIwGc2mOlrdErMI95J0",
-  authDomain: "aadityajha00.firebaseapp.com",
-  projectId: "aadityajha00",
-  storageBucket: "aadityajha00.firebasestorage.app",
-  messagingSenderId: "953486639095",
-  appId: "1:953486639095:web:0e23e9a917c4b6fd27f8f2"
-};
+  const db = getFirestore(app);
 
-const app = initializeApp(firebaseConfig);
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = form.email.value;
+    const message = form.message.value;
+
+    await addDoc(collection(db, "messages"), {
+      email: email,
+      message: message,
+      timestamp: new Date()
+    });
+
+    alert("✅ Message sent successfully!");
+    form.reset();
+  });
+</script>
+
 </body>
 </html>
-
-
+  
