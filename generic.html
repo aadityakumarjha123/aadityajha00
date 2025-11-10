@@ -1,141 +1,241 @@
-<!DOCTYPE HTML>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Generic - Forty by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Aaditya Jha - Learn more about my education, goals, and journey." />
+  <title>About | Aaditya Jha</title>
+  <link rel="icon" href="assets/images/logo.png" />
+  <style>
+    /* ===== GENERAL STYLES ===== */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f8fafc;
+      color: #222;
+      line-height: 1.7;
+    }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    header {
+      background: #111;
+      color: #fff;
+      padding: 15px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+    header h1 {
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
 
-				<!-- Main -->
-					<div id="main" class="alt">
+    nav a:hover {
+      color: #00bcd4;
+    }
 
-						<!-- One -->
-							<section id="one">
-								<div class="inner">
-									<header class="major">
-										<h1>Generic</h1>
-									</header>
-									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-									<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-								</div>
-							</section>
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(to bottom right, #004d99, #0099ff);
+      color: white;
+      text-align: center;
+      padding: 80px 10%;
+    }
 
-					</div>
+    .hero h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
 
-				<!-- Contact -->
-					<section id="contact">
-						<div class="inner">
-							<section>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="6"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Clear" /></li>
-									</ul>
-								</form>
-							</section>
-							<section class="split">
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-envelope"></span>
-										<h3>Email</h3>
-										<a href="#">information@untitled.tld</a>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-phone"></span>
-										<h3>Phone</h3>
-										<span>(000) 000-0000 x12387</span>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-home"></span>
-										<h3>Address</h3>
-										<span>1234 Somewhere Road #5432<br />
-										Nashville, TN 00000<br />
-										United States of America</span>
-									</div>
-								</section>
-							</section>
-						</div>
-					</section>
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<ul class="icons">
-								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</footer>
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      padding: 70px 10%;
+      background: #fff;
+      text-align: center;
+    }
 
-			</div>
+    .about h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    .about p {
+      color: #444;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 17px;
+    }
 
-	</body>
+    /* ===== EDUCATION / EXPERIENCE ===== */
+    .education {
+      background: #eaf6ff;
+      padding: 70px 10%;
+    }
+
+    .education h3 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      border-left: 3px solid #00bcd4;
+      padding-left: 30px;
+    }
+
+    .timeline-item {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 6px;
+      width: 15px;
+      height: 15px;
+      background: #00bcd4;
+      border-radius: 50%;
+    }
+
+    .timeline-item h4 {
+      margin: 0;
+      font-size: 18px;
+      color: #004d99;
+    }
+
+    .timeline-item span {
+      font-size: 15px;
+      color: #777;
+    }
+
+    .timeline-item p {
+      margin-top: 8px;
+      color: #444;
+    }
+
+    /* ===== VISION SECTION ===== */
+    .vision {
+      background: #fff;
+      padding: 70px 10%;
+      text-align: center;
+    }
+
+    .vision h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .vision p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 17px;
+      color: #444;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .hero h2 { font-size: 32px; }
+      .about h3, .education h3, .vision h3 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <h1>Aaditya Jha</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="landing.html">Landing</a>
+      <a href="generic.html">About</a>
+      <a href="elements.html">Elements</a>
+      <a href="login.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <h2>About Me</h2>
+    <p>Discover who I am, what I do, and what drives me every day to create and learn something new.</p>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="about">
+    <h3>Who I Am</h3>
+    <p>
+      I’m <b>Aaditya Jha</b>, a +2 Science (Computer) student from Sarlahi, Madhesh Pradesh, Nepal.
+      I’m deeply interested in technology, programming, robotics, and creative innovations.
+      My passion lies in turning ideas into meaningful projects that help people and inspire learning.
+    </p>
+  </section>
+
+  <!-- ===== EDUCATION SECTION ===== -->
+  <section class="education">
+    <h3>My Journey So Far</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>+2 Science (Computer)</h4>
+        <span>2023 – Present</span>
+        <p>Currently studying Science with a focus on Computer Science, exploring C programming, robotics, and AI fundamentals.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Secondary Education Examination (SEE)</h4>
+        <span>Completed – Sarlahi, Nepal</span>
+        <p>Successfully completed SEE from a governmental school with strong academic results and growing interest in technology and innovation.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Personal Projects</h4>
+        <span>Ongoing</span>
+        <p>Building personal websites, experimenting with automation ideas, and learning how tech can make Nepal a smarter country.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISION SECTION ===== -->
+  <section class="vision">
+    <h3>My Vision & Goals</h3>
+    <p>
+      My goal is to become a professional in technology — developing projects that
+      can improve daily life in Nepal. I believe in using creativity and innovation
+      to bring change, especially in robotics, digital systems, and automation.
+    </p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    © 2025 Aaditya Jha | Designed & Developed by Aaditya Jha
+  </footer>
+
+</body>
 </html>
