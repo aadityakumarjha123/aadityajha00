@@ -1,133 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Aaditya Jha Portfolio Website - Home">
-<title>Aaditya Jha | Home</title>
-<link rel="icon" href="assets/images/logo.png">
-<style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-  body{background:#f9f9f9;color:#222;scroll-behavior:smooth;overflow-x:hidden;}
-  a{text-decoration:none;color:inherit;}
-
-  /* ===== HEADER ===== */
-  header{
-    background:#111;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:15px 6%;
-    position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,0.3);
-  }
-  header h1{font-size:22px;}
-  nav a{margin-left:20px;font-weight:500;transition:0.3s;position:relative;}
-  nav a::after{
-    content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:#00ffff;transition:0.3s;
-  }
-  nav a:hover::after{width:100%;}
-  nav a:hover{color:#00bcd4;}
-
-  /* ===== HERO ===== */
-  .hero{
-    height:95vh;background:linear-gradient(135deg,#004d99,#0099ff);
-    color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;
-  }
-  .hero h2{font-size:50px;margin-bottom:15px;text-shadow:2px 2px 10px rgba(0,0,0,0.5);}
-  .hero h2 span{color:#00ffff;}
-  .hero p{font-size:20px;max-width:650px;margin-bottom:30px;}
-  .hero button{
-    padding:14px 35px;font-size:17px;background:#fff;border:none;border-radius:30px;color:#004d99;font-weight:600;
-    cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:all 0.3s ease;
-  }
-  .hero button:hover{background:#00bcd4;color:white;transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.4);}
-
-  /* ===== FLOATING PARTICLES ===== */
-  .particle{position:absolute;border-radius:50%;background:rgba(255,255,255,0.5);animation:float 12s linear infinite;}
-  @keyframes float{0%{transform:translateY(0) translateX(0);opacity:0.5;}50%{opacity:1;}100%{transform:translateY(-100vh) translateX(50px);opacity:0;}}
-  
-  /* ===== SKILLS ===== */
-  .skills-preview{padding:80px 10%;text-align:center;background:#fff;}
-  .skills-preview h3{font-size:32px;margin-bottom:30px;color:#004d99;}
-  .skills-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;margin-top:30px;}
-  .skill{background:#eaf6ff;padding:25px 20px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.15);transition:all 0.4s ease;opacity:0;transform:translateY(20px);}
-  .skill.visible{opacity:1;transform:translateY(0);}
-  .skill h4{font-size:20px;margin-bottom:10px;color:#004d99;}
-  .skill p{font-size:15px;color:#555;}
-  .skill:hover{transform:translateY(-8px);box-shadow:0 12px 25px rgba(0,0,0,0.25);}
-
-  /* ===== CONTACT ===== */
-  #contact{padding:80px 10%;background:#f4f8fc;text-align:center;}
-  #contact h3{font-size:32px;margin-bottom:25px;color:#004d99;}
-  #contact form{max-width:500px;margin:0 auto 50px auto;display:flex;flex-direction:column;}
-  #contact input,#contact textarea{padding:12px;margin-bottom:20px;border-radius:8px;border:1px solid #ccc;font-size:15px;}
-  #contact button{padding:12px;background:#004d99;color:#fff;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:0.3s;}
-  #contact button:hover{background:#00bcd4;}
-  .contact-methods{display:flex;justify-content:space-around;flex-wrap:wrap;gap:30px;text-align:center;}
-  .contact-methods div{background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);flex:1 1 200px;}
-  .contact-methods h3{margin-top:10px;color:#004d99;}
-  .contact-methods a,.contact-methods span{display:block;margin-top:5px;color:#555;font-size:15px;}
-
-  /* ===== FOOTER ===== */
-  footer{background:#111;color:#ccc;text-align:center;padding:25px;font-size:14px;}
-
-  /* ===== RESPONSIVE ===== */
-  @media(max-width:768px){.hero h2{font-size:36px;}.hero p{font-size:16px;}}
-  @media(max-width:480px){.hero h2{font-size:28px;}.hero button{padding:10px 20px;}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aaditya Jha Portfolio - Home">
+  <title>Aaditya Jha | Home</title>
+  <link rel="icon" href="assets/images/logo.png">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
+
+<!-- ===== HEADER ===== -->
 <header>
   <h1>Aaditya Jha</h1>
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="landing.html">Landing</a>
     <a href="generic.html">About</a>
     <a href="elements.html">Elements</a>
-    <a href="login.html">Contact</a>
+    <span id="authButtons">
+      <button id="loginBtn" style="margin-left:20px;">Login</button>
+    </span>
+    <span id="profile" style="display:none;">
+      <img id="profilePic" src="" alt="Profile">
+      <span id="profileName"></span>
+      <button id="logoutBtn">Logout</button>
+    </span>
   </nav>
 </header>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
-  <h2>Hello, I’m <span>Aaditya Jha</span></h2>
+  <h2>Hello, I’m Aaditya Jha</h2>
   <p>+2 Science (Computer) student | Passionate about technology, programming, and creating new things</p>
   <button onclick="window.location.href='login.html'">Get in Touch</button>
-  <div class="particle" style="width:15px;height:15px;left:10%;animation-delay:0s;"></div>
-  <div class="particle" style="width:20px;height:20px;left:50%;animation-delay:2s;"></div>
-  <div class="particle" style="width:12px;height:12px;left:80%;animation-delay:4s;"></div>
-  <div class="particle" style="width:10px;height:10px;left:30%;animation-delay:1s;"></div>
-  <div class="particle" style="width:18px;height:18px;left:70%;animation-delay:3s;"></div>
 </section>
 
+<!-- ===== SKILLS ===== -->
 <section class="skills-preview">
   <h3>My Skills</h3>
-  <div class="skills-cards">
-    <div class="skill">💻<h4>Web Development</h4><p>HTML, CSS, JavaScript, Responsive Designs.</p></div>
-    <div class="skill">⚙<h4>Programming</h4><p>C, Python, Robotics basics.</p></div>
-    <div class="skill">🎨<h4>Creativity</h4><p>Turning ideas into functional projects.</p></div>
-    <div class="skill">🚀<h4>Innovation</h4><p>Simple tech solutions for real-world problems.</p></div>
-  </div>
+  <p>Web Development | Programming (C, Python) | Robotics | Creativity | Innovation</p>
 </section>
 
+<!-- ===== CONTACT ===== -->
 <section id="contact">
   <h3>Contact Me</h3>
   <form action="https://formspree.io/f/xeovjvqg" method="POST">
-    <label>Your email:<input type="email" name="email" required></label>
-    <label>Your message:<textarea name="message" required></textarea></label>
+    <label>Your email:
+      <input type="email" name="email" required>
+    </label>
+    <label>Your message:
+      <textarea name="message" required></textarea>
+    </label>
     <button type="submit">Send</button>
   </form>
   <div class="contact-methods">
-    <div><h3>Email</h3><a href="mailto:jhaaaditya00@gmail.com">jhaaaditya00@gmail.com</a></div>
-    <div><h3>Phone</h3><span>(+977 9840688748)</span></div>
-    <div><h3>Address</h3><span>Sarlahi, Madhesh Pradesh, Nepal</span></div>
+    <div>
+      <h3>Email</h3>
+      <a href="mailto:jhaaaditya00@gmail.com">jhaaaditya00@gmail.com</a>
+    </div>
+    <div>
+      <h3>Phone</h3>
+      <span>(+977 9840688748)</span>
+    </div>
+    <div>
+      <h3>Address</h3>
+      <span>Sarlahi, Madhesh Pradesh, Nepal</span>
+    </div>
+  </div>
+  <div class="social-links">
+    <a href="https://www.facebook.com/share/1D71yckcG2/" target="_blank">Facebook</a> |
+    <a href="https://www.instagram.com/jha.aaditya_?igsh=MWdyZDFwbXVjb2JkdQ==" target="_blank">Instagram</a> |
+    <a href="https://wa.me/9779840688748" target="_blank">WhatsApp</a> |
+    <a href="https://www.tiktok.com/@aadii.tya?_r=1&_t=ZS-91G7TTSMQ1h" target="_blank">TikTok</a>
   </div>
 </section>
 
+<!-- ===== FOOTER ===== -->
 <footer>
-  © 2025 Aaditya Jha | Designed & Developed by Aaditya Jha
+  <ul class="icons">
+    <li><a href="https://www.facebook.com/share/1D71yckcG2/" target="_blank">Facebook</a></li>
+    <li><a href="https://www.instagram.com/jha.aaditya_?igsh=MWdyZDFwbXVjb2JkdQ==" target="_blank">Instagram</a></li>
+    <li><a href="https://wa.me/9779840688748" target="_blank">WhatsApp</a></li>
+    <li><a href="https://www.tiktok.com/@aadii.tya?_r=1&_t=ZS-91G7TTSMQ1h" target="_blank">TikTok</a></li>
+  </ul>
+  <p>© 2025 Aaditya Jha | Designed & Developed by Aaditya Jha</p>
 </footer>
 
+<!-- ===== FIREBASE LOGIN & CONTACT SCRIPT ===== -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAos3HZUfo49pLQEIwGc2mOlrdErMI95J0",
   authDomain: "aadityajha00.firebaseapp.com",
@@ -136,21 +102,51 @@ const firebaseConfig = {
   messagingSenderId: "953486639095",
   appId: "1:953486639095:web:0e23e9a917c4b6fd27f8f2"
 };
+
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Contact form submission
 const form = document.querySelector("form");
-form.addEventListener("submit", async e => {
+form.addEventListener("submit", async e=>{
   e.preventDefault();
   const email = form.email.value;
   const message = form.message.value;
-  await addDoc(collection(db,"messages"),{email,message,timestamp:new Date()});
-  alert("Message sent successfully!");form.reset();
+  await addDoc(collection(db,"messages"), { email, message, timestamp:new Date() });
+  alert("Message sent successfully!");
+  form.reset();
 });
 
-// Skill animation
-const skills=document.querySelectorAll('.skill');
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}})},{threshold:0.3});
-skills.forEach(skill=>observer.observe(skill));
+// Auth system
+const loginBtn = document.getElementById('loginBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+const profileSpan = document.getElementById('profile');
+const profileName = document.getElementById('profileName');
+
+loginBtn.addEventListener('click', ()=>{
+  const email = prompt("Enter Email");
+  const password = prompt("Enter Password");
+  if(email && password){
+    signInWithEmailAndPassword(auth,email,password)
+    .catch(e=>alert("Login Error: "+e.message));
+  }
+});
+
+logoutBtn.addEventListener('click', ()=> signOut(auth));
+
+onAuthStateChanged(auth, user=>{
+  if(user){
+    loginBtn.style.display="none";
+    profileSpan.style.display="flex";
+    profileName.textContent = user.displayName || user.email;
+    profileSpan.querySelector('img').src = user.photoURL || "https://via.placeholder.com/40";
+  } else {
+    loginBtn.style.display="inline-block";
+    profileSpan.style.display="none";
+  }
+});
 </script>
 
 </body>
