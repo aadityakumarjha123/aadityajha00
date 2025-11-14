@@ -13,9 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
-  // ------------------------------------
-  // CREATE SCENE & CAMERA
-  // ------------------------------------
+ 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
     75,
@@ -29,9 +27,7 @@
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
-  // ------------------------------------
-  // HEART PATH FUNCTION
-  // ------------------------------------
+ 
   function createHeartPath(particleIndex, totalParticles) {
     const t = (particleIndex / totalParticles) * Math.PI * 2;
     const scale = 2.2;
@@ -53,9 +49,7 @@
     );
   }
 
-  // ------------------------------------
-  // CREATE PARTICLES
-  // ------------------------------------
+
   const totalParticles = 2000;
   const geometry = new THREE.BufferGeometry();
   const positions = new Float32Array(totalParticles * 3);
@@ -80,9 +74,7 @@
   const particleSystem = new THREE.Points(geometry, material);
   scene.add(particleSystem);
 
-  // ------------------------------------
-  // ANIMATION LOOP
-  // ------------------------------------
+
   function animate() {
     requestAnimationFrame(animate);
     particleSystem.rotation.y += 0.002;
