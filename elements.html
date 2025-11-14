@@ -3,56 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Aaditya Jha | Elements Page">
-<title>Aaditya Jha | Elements</title>
+<meta name="description" content="Aaditya Jha - Skills and Services Portfolio">
+<title>Aaditya Jha | Skills & Services</title>
 <link rel="icon" href="assets/images/logo.png">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#f9f9f9;color:#222;scroll-behavior:smooth;}
-header{background:#111;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:15px 6%;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
-header h1{font-size:22px;}
-nav a{margin-left:20px;font-weight:500;position:relative;transition:0.3s;}
-nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:#00ffff;transition:0.3s;}
-nav a:hover::after{width:100%;}
-nav a:hover{color:#00bcd4;}
-
-.hero{height:80vh;background:linear-gradient(135deg,#004d99,#0099ff);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-.hero h2{font-size:48px;margin-bottom:15px;text-shadow:2px 2px 10px rgba(0,0,0,0.5);}
-.hero p{font-size:18px;max-width:600px;margin-bottom:30px;}
-
-.elements-section{padding:60px 10%;text-align:center;}
-.elements-section h3{font-size:32px;margin-bottom:20px;color:#004d99;}
-.element-box{display:inline-block;background:#fff;margin:15px;padding:25px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.15);transition:0.4s;}
-.element-box:hover{transform:translateY(-5px);box-shadow:0 12px 25px rgba(0,0,0,0.25);}
-
-footer{background:#111;color:#ccc;text-align:center;padding:20px;font-size:14px;}
+  body {margin:0; font-family:'Poppins',sans-serif; background:#f9f9f9; color:#222;}
+  header {background:#111; color:#fff; display:flex; justify-content:space-between; align-items:center; padding:15px 6%; position:sticky; top:0; z-index:1000;}
+  header h1 {font-size:22px;}
+  nav a {color:#fff; text-decoration:none; margin-left:20px; font-weight:500; transition:0.3s;}
+  nav a:hover, nav a.active {color:#00bcd4;}
+  .hero {height:70vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(to bottom right,#004d99,#0099ff); color:#fff;}
+  .hero h2 {font-size:42px;}
+  .skills-section {padding:60px 10%; text-align:center; background:#eaf6ff;}
+  .skills-section h3 {font-size:28px; margin-bottom:20px; color:#004d99;}
+  .skill-cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; margin-top:30px;}
+  .skill-card {background:white; border-radius:12px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:transform 0.3s;}
+  .skill-card:hover {transform:translateY(-7px);}
+  .skill-card h4 {margin-bottom:10px;}
+  footer {background:#111; color:#ccc; text-align:center; padding:20px; font-size:14px;}
+  footer ul.icons {margin-bottom:10px; list-style:none; display:flex; justify-content:center; gap:15px;}
+  footer ul.icons li a {color:#ccc; font-size:20px; text-decoration:none; transition:0.3s;}
+  footer ul.icons li a:hover {color:#00bcd4;}
+  footer a {color:#00bcd4; text-decoration:none;}
 </style>
 </head>
 <body>
+
+<!-- ===== HEADER ===== -->
 <header>
-<h1>Aaditya Jha</h1>
-<nav>
-<a href="index.html">Home</a>
-<a href="landing.html">Landing</a>
-<a href="generic.html">About</a>
-<a href="elements.html">Elements</a>
-<a href="login.html">Contact</a>
-</nav>
+  <h1>Aaditya Jha</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="landing.html">Landing</a>
+    <a href="generic.html">About</a>
+    <a href="elements.html" class="active">Skills</a>
+    <a href="login.html">Contact</a>
+    <span id="authButtons">
+      <button id="loginBtn" style="margin-left:20px;">Login</button>
+    </span>
+    <span id="profile" style="display:none;">
+      <img id="profilePic" src="" alt="Profile" style="border-radius:50%; width:40px; height:40px; margin-right:10px;">
+      <span id="profileName"></span>
+      <button id="logoutBtn">Logout</button>
+    </span>
+  </nav>
 </header>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
-<h2>Elements Page</h2>
-<p>Showcasing small components and UI elements used in my portfolio.</p>
+  <h2>My Skills & Services</h2>
+  <p>Here’s what I can do for you — coding, web development, robotics, and creative solutions.</p>
 </section>
 
-<section class="elements-section">
-<h3>Sample Elements</h3>
-<div class="element-box">Button Example</div>
-<div class="element-box">Card Example</div>
-<div class="element-box">Input Example</div>
-<div class="element-box">Box Shadow Example</div>
+<!-- ===== SKILLS & SERVICES ===== -->
+<section class="skills-section">
+  <h3>My Skills</h3>
+  <div class="skill-cards">
+    <div class="skill-card">
+      <h4>💻 Web Development</h4>
+      <p>Responsive websites using HTML, CSS, JavaScript, and modern frameworks.</p>
+    </div>
+    <div class="skill-card">
+      <h4>⚙ Programming</h4>
+      <p>Proficient in C, Python, and creating small-scale robotics projects.</p>
+    </div>
+    <div class="skill-card">
+      <h4>🎨 Creativity</h4>
+      <p>Designing innovative projects, graphics, and digital solutions.</p>
+    </div>
+    <div class="skill-card">
+      <h4>🚀 Innovation</h4>
+      <p>Developing practical and creative solutions for real-world problems in Nepal.</p>
+    </div>
+    <div class="skill-card">
+      <h4>🛠 Problem Solving</h4>
+      <p>Debugging, logical thinking, and implementing solutions efficiently.</p>
+    </div>
+    <div class="skill-card">
+      <h4>🤝 Collaboration</h4>
+      <p>Working with others to create better projects and team-based solutions.</p>
+    </div>
+  </div>
 </section>
 
-<footer>© 2025 Aaditya Jha | Designed & Developed by Aaditya Jha</footer>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <ul class="icons">
+    <li><a href="https://www.facebook.com/share/1D71yckcG2/" target="_blank">Facebook</a></li>
+    <li><a href="https://www.instagram.com/jha.aaditya_?igsh=MWdyZDFwbXVjb2JkdQ==" target="_blank">Instagram</a></li>
+    <li><a href="https://wa.me/9779840688748" target="_blank">WhatsApp</a></li>
+    <li><a href="https://www.tiktok.com/@aadii.tya?_r=1&_t=ZS-91G7TTSMQ1h" target="_blank">TikTok</a></li>
+  </ul>
+  <p>© 2025 Aaditya Jha | Designed & Developed by Aaditya Jha</p>
+</footer>
+
+<!-- ===== FIREBASE LOGIN SCRIPT ===== -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAos3HZUfo49pLQEIwGc2mOlrdErMI95J0",
+  authDomain: "aadityajha00.firebaseapp.com",
+  projectId: "aadityajha00",
+  storageBucket: "aadityajha00.firebasestorage.app",
+  messagingSenderId: "953486639095",
+  appId: "1:953486639095:web:0e23e9a917c4b6fd27f8f2"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const loginBtn = document.getElementById('loginBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+const profileSpan = document.getElementById('profile');
+const profileName = document.getElementById('profileName');
+
+loginBtn.addEventListener('click', ()=>{
+  const email = prompt("Enter Email");
+  const password = prompt("Enter Password");
+  if(email && password){
+    signInWithEmailAndPassword(auth,email,password)
+    .catch(e=>alert("Login Error: "+e.message));
+  }
+});
+
+logoutBtn.addEventListener('click', ()=> signOut(auth));
+
+onAuthStateChanged(auth, user=>{
+  if(user){
+    loginBtn.style.display="none";
+    profileSpan.style.display="flex";
+    profileName.textContent = user.displayName || user.email;
+    profileSpan.querySelector('img').src = user.photoURL || "https://via.placeholder.com/40";
+  } else {
+    loginBtn.style.display="inline-block";
+    profileSpan.style.display="none";
+  }
+});
+</script>
+
 </body>
 </html>
