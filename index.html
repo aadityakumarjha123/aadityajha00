@@ -304,7 +304,7 @@
     </ul>
   </footer>
 
-<!-- 🔽 Your Firebase script starts after footer -->
+<!-- ===== FIREBASE (CORRECT + ONLY ONE SCRIPT) ===== -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -333,30 +333,10 @@
       timestamp: new Date()
     });
 
-    alert("✅ Message sent successfully!");
+    alert("Message sent successfully!");
     form.reset();
   });
 </script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAos3HZUfo49pLQEIwGc2mOlrdErMI95J0",
-    authDomain: "aadityajha00.firebaseapp.com",
-    projectId: "aadityajha00",
-    storageBucket: "aadityajha00.firebasestorage.app",
-    messagingSenderId: "953486639095",
-    appId: "1:953486639095:web:d8d4b1870ab0136b27f8f2"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
 </body>
 </html>
-  
-
