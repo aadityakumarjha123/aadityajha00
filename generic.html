@@ -1,241 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="About Aaditya Jha - Learn more about my education, goals, and journey." />
-  <title>About | Aaditya Jha</title>
-  <link rel="icon" href="assets/images/logo.png" />
-  <style>
-    /* ===== GENERAL STYLES ===== */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f8fafc;
-      color: #222;
-      line-height: 1.7;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="About Aaditya Jha">
+<title>Aaditya Jha | About</title>
+<link rel="icon" href="assets/images/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#f9f9f9;color:#222;scroll-behavior:smooth;}
+header{background:#111;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:15px 6%;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+header h1{font-size:22px;}
+nav a{margin-left:20px;font-weight:500;position:relative;transition:0.3s;}
+nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:#00ffff;transition:0.3s;}
+nav a:hover::after{width:100%;}
+nav a:hover{color:#00bcd4;}
 
-    header {
-      background: #111;
-      color: #fff;
-      padding: 15px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+.hero{height:80vh;background:linear-gradient(135deg,#0099ff,#004d99);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+.hero h2{font-size:48px;margin-bottom:15px;text-shadow:2px 2px 10px rgba(0,0,0,0.5);}
+.hero p{font-size:18px;max-width:600px;margin-bottom:30px;}
 
-    header h1 {
-      font-size: 22px;
-      letter-spacing: 1px;
-    }
+.about-section{padding:80px 10%;background:#fff;text-align:center;}
+.about-section h3{font-size:32px;margin-bottom:25px;color:#004d99;}
+.about-section p{font-size:17px;line-height:1.7;color:#555;}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #00bcd4;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      background: linear-gradient(to bottom right, #004d99, #0099ff);
-      color: white;
-      text-align: center;
-      padding: 80px 10%;
-    }
-
-    .hero h2 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    /* ===== ABOUT SECTION ===== */
-    .about {
-      padding: 70px 10%;
-      background: #fff;
-      text-align: center;
-    }
-
-    .about h3 {
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
-
-    .about p {
-      color: #444;
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 17px;
-    }
-
-    /* ===== EDUCATION / EXPERIENCE ===== */
-    .education {
-      background: #eaf6ff;
-      padding: 70px 10%;
-    }
-
-    .education h3 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 30px;
-    }
-
-    .timeline {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      border-left: 3px solid #00bcd4;
-      padding-left: 30px;
-    }
-
-    .timeline-item {
-      margin-bottom: 25px;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -11px;
-      top: 6px;
-      width: 15px;
-      height: 15px;
-      background: #00bcd4;
-      border-radius: 50%;
-    }
-
-    .timeline-item h4 {
-      margin: 0;
-      font-size: 18px;
-      color: #004d99;
-    }
-
-    .timeline-item span {
-      font-size: 15px;
-      color: #777;
-    }
-
-    .timeline-item p {
-      margin-top: 8px;
-      color: #444;
-    }
-
-    /* ===== VISION SECTION ===== */
-    .vision {
-      background: #fff;
-      padding: 70px 10%;
-      text-align: center;
-    }
-
-    .vision h3 {
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
-
-    .vision p {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 17px;
-      color: #444;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #111;
-      color: #ccc;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 600px) {
-      .hero h2 { font-size: 32px; }
-      .about h3, .education h3, .vision h3 { font-size: 24px; }
-    }
-  </style>
+footer{background:#111;color:#ccc;text-align:center;padding:20px;font-size:14px;}
+</style>
 </head>
 <body>
+<header>
+<h1>Aaditya Jha</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="landing.html">Landing</a>
+<a href="generic.html">About</a>
+<a href="elements.html">Elements</a>
+<a href="login.html">Contact</a>
+</nav>
+</header>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <h1>Aaditya Jha</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="landing.html">Landing</a>
-      <a href="generic.html">About</a>
-      <a href="elements.html">Elements</a>
-      <a href="login.html">Contact</a>
-    </nav>
-  </header>
+<section class="hero">
+<h2>About Me</h2>
+<p>Learn more about my background, interests, and skills as a technology enthusiast.</p>
+</section>
 
-  <!-- ===== HERO SECTION ===== -->
-  <section class="hero">
-    <h2>About Me</h2>
-    <p>Discover who I am, what I do, and what drives me every day to create and learn something new.</p>
-  </section>
+<section class="about-section">
+<h3>My Story</h3>
+<p>I’m a +2 Science (Computer) student from Sarlahi, Nepal, passionate about programming, web development, robotics, and creativity. I enjoy building projects that solve real problems and contribute to the tech community.</p>
+</section>
 
-  <!-- ===== ABOUT SECTION ===== -->
-  <section class="about">
-    <h3>Who I Am</h3>
-    <p>
-      I’m <b>Aaditya Jha</b>, a +2 Science (Computer) student from Sarlahi, Madhesh Pradesh, Nepal.
-      I’m deeply interested in technology, programming, robotics, and creative innovations.
-      My passion lies in turning ideas into meaningful projects that help people and inspire learning.
-    </p>
-  </section>
-
-  <!-- ===== EDUCATION SECTION ===== -->
-  <section class="education">
-    <h3>My Journey So Far</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h4>+2 Science (Computer)</h4>
-        <span>2023 – Present</span>
-        <p>Currently studying Science with a focus on Computer Science, exploring C programming, robotics, and AI fundamentals.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>Secondary Education Examination (SEE)</h4>
-        <span>Completed – Sarlahi, Nepal</span>
-        <p>Successfully completed SEE from a governmental school with strong academic results and growing interest in technology and innovation.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>Personal Projects</h4>
-        <span>Ongoing</span>
-        <p>Building personal websites, experimenting with automation ideas, and learning how tech can make Nepal a smarter country.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== VISION SECTION ===== -->
-  <section class="vision">
-    <h3>My Vision & Goals</h3>
-    <p>
-      My goal is to become a professional in technology — developing projects that
-      can improve daily life in Nepal. I believe in using creativity and innovation
-      to bring change, especially in robotics, digital systems, and automation.
-    </p>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    © 2025 Aaditya Jha | Designed & Developed by Aaditya Jha
-  </footer>
-
+<footer>© 2025 Aaditya Jha | Designed & Developed by Aaditya Jha</footer>
 </body>
 </html>
