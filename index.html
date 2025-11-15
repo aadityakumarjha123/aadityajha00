@@ -1,107 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Aaditya Jha - Skills and Services Portfolio">
-<title>Aaditya Jha | Skills & Services</title>
-<link rel="icon" href="assets/images/logo.png">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aaditya Jha — Portfolio</title>
+<meta name="description" content="Aaditya Jha - single page portfolio with login modal, profile pics, contact and animations." />
+<link rel="icon" href="assets/images/logo.png" />
 <style>
-  body {margin:0; font-family:'Poppins',sans-serif; background:#f9f9f9; color:#222;}
-  header {background:#111; color:#fff; display:flex; justify-content:space-between; align-items:center; padding:15px 6%; position:sticky; top:0; z-index:1000;}
-  header h1 {font-size:22px;}
-  nav a {color:#fff; text-decoration:none; margin-left:20px; font-weight:500; transition:0.3s;}
-  nav a:hover, nav a.active {color:#00bcd4;}
-  .hero {height:70vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(to bottom right,#004d99,#0099ff); color:#fff;}
-  .hero h2 {font-size:42px;}
-  .skills-section {padding:60px 10%; text-align:center; background:#eaf6ff;}
-  .skills-section h3 {font-size:28px; margin-bottom:20px; color:#004d99;}
-  .skill-cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; margin-top:30px;}
-  .skill-card {background:white; border-radius:12px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:transform 0.3s;}
-  .skill-card:hover {transform:translateY(-7px);}
-  .skill-card h4 {margin-bottom:10px;}
-  footer {background:#111; color:#ccc; text-align:center; padding:20px; font-size:14px;}
-  footer ul.icons {margin-bottom:10px; list-style:none; display:flex; justify-content:center; gap:15px;}
-  footer ul.icons li a {color:#ccc; font-size:20px; text-decoration:none; transition:0.3s;}
-  footer ul.icons li a:hover {color:#00bcd4;}
-  footer a {color:#00bcd4; text-decoration:none;}
+  :root{
+    --bg:#071027; --card:#0b1220; --accent:#00bcd4; --accent2:#00ffff; --muted:#94a3b8; --text:#e6eef6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:Poppins, Inter, system-ui, Arial;}
+  html,body{height:100%;}
+  body{background:linear-gradient(180deg,#071027,#04121a);color:var(--text);-webkit-font-smoothing:antialiased;scroll-behavior:smooth;}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:999;background:rgba(3,6,12,0.45);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:12px;}
+  .brand h1{color:var(--accent2);font-size:20px;}
+  nav{display:flex;gap:12px;align-items:center;}
+  .nav-link{color:var(--text);text-decoration:none;font-weight:600;padding:8px 6px;position:relative;}
+  .nav-link:hover{color:var(--accent);}
+  .nav-link.active::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:6px;}
+
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--text);cursor:pointer;}
+  .profile{display:flex;align-items:center;gap:10px;padding:6px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));}
+  .profile img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.04);}
+
+  /* mobile */
+  .menu-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:8px;color:var(--text);cursor:pointer;}
+  .mobile-nav{display:none;position:absolute;left:0;right:0;top:64px;background:linear-gradient(180deg, rgba(2,6,23,0.95), rgba(2,6,23,0.95)); padding:12px;}
+
+  /* HERO */
+  .hero{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:36px 20px;position:relative;overflow:hidden;}
+  .hero .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:36px;border-radius:12px;max-width:980px;box-shadow:0 12px 40px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.02);}
+  .hero h2{font-size:44px;margin-bottom:12px;color:#fff;}
+  .hero h2 span{color:var(--accent2);}
+  .hero p{color:var(--muted);font-size:17px;margin-bottom:18px;}
+
+  .cta{display:inline-flex;align-items:center;gap:12px;padding:12px 22px;border-radius:30px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#011217;font-weight:700;border:none;cursor:pointer;}
+  .cta.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);}
+
+  /* sections / layout */
+  main{max-width:1100px;margin:36px auto;padding:0 20px 80px;}
+  section{margin-bottom:28px;}
+  .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);}
+  h3.section-title{font-size:22px;color:var(--accent2);margin-bottom:8px;}
+  p.lead{color:var(--muted);font-size:15px;margin-bottom:12px;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  .card{padding:16px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);transition:transform .25s;}
+  .card:hover{transform:translateY(-6px);}
+
+  /* contact + login layout */
+  .two-col{display:grid;grid-template-columns:1fr 420px;gap:18px;align-items:start;}
+  @media(max-width:920px){.two-col{grid-template-columns:1fr;}}
+
+  .form-field{display:flex;flex-direction:column;margin-bottom:10px;}
+  input,textarea{padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);color:var(--text);outline:none;}
+  textarea{min-height:120px;resize:vertical;}
+  .btn{padding:10px 12px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#021216;font-weight:700;cursor:pointer;}
+
+  /* login modal */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(1,2,6,0.6);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity .2s;}
+  .modal-backdrop.open{opacity:1;pointer-events:auto;}
+  .modal{width:420px;max-width:92%;background:linear-gradient(180deg,#071426,#04121a);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 20px 60px rgba(0,0,0,0.7);}
+  .modal h4{color:var(--accent2);margin-bottom:8px;}
+  .avatar-preview{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.04);display:block;margin:8px auto;}
+
+  /* footer */
+  footer{padding:26px;text-align:center;color:var(--muted);background:linear-gradient(180deg,#04121a,#03101a);}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* responsive */
+  @media(max-width:640px){
+    .nav-link{display:none;}
+    .menu-toggle{display:inline-block;}
+    .hero h2{font-size:28px;}
+  }
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header>
-  <h1>Aaditya Jha</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="landing.html">Landing</a>
-    <a href="generic.html">About</a>
-    <a href="elements.html" class="active">Skills</a>
-    <a href="login.html">Contact</a>
-    <span id="authButtons">
-      <button id="loginBtn" style="margin-left:20px;">Login</button>
-    </span>
-    <span id="profile" style="display:none;">
-      <img id="profilePic" src="" alt="Profile" style="border-radius:50%; width:40px; height:40px; margin-right:10px;">
-      <span id="profileName"></span>
-      <button id="logoutBtn">Logout</button>
-    </span>
-  </nav>
+  <div class="nav-inner">
+    <div class="brand"><h1>Aaditya Jha</h1></div>
+
+    <nav id="mainNav">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#landing" class="nav-link">Landing</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#elements" class="nav-link">Elements</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#login" class="nav-link">Login</a>
+    </nav>
+
+    <div class="nav-right">
+      <button id="menuToggle" class="menu-toggle">☰</button>
+      <div id="authButtons"><button id="openLogin" class="btn-ghost">Login / Register</button></div>
+      <div id="profileWidget" class="profile" style="display:none;">
+        <img id="navAvatar" src="https://via.placeholder.com/40" alt="avatar">
+        <div style="display:flex;flex-direction:column;">
+          <span id="navName" style="font-weight:700;color:var(--accent2);font-size:14px">User</span>
+          <button id="logoutBtn" class="btn-ghost" style="margin-top:6px;padding:6px 8px;">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="mobileNav" class="mobile-nav"></div>
 </header>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <h2>My Skills & Services</h2>
-  <p>Here’s what I can do for you — coding, web development, robotics, and creative solutions.</p>
-</section>
-
-<!-- ===== SKILLS & SERVICES ===== -->
-<section class="skills-section">
-  <h3>My Skills</h3>
-  <div class="skill-cards">
-    <div class="skill-card">
-      <h4>💻 Web Development</h4>
-      <p>Responsive websites using HTML, CSS, JavaScript, and modern frameworks.</p>
-    </div>
-    <div class="skill-card">
-      <h4>⚙ Programming</h4>
-      <p>Proficient in C, Python, and creating small-scale robotics projects.</p>
-    </div>
-    <div class="skill-card">
-      <h4>🎨 Creativity</h4>
-      <p>Designing innovative projects, graphics, and digital solutions.</p>
-    </div>
-    <div class="skill-card">
-      <h4>🚀 Innovation</h4>
-      <p>Developing practical and creative solutions for real-world problems in Nepal.</p>
-    </div>
-    <div class="skill-card">
-      <h4>🛠 Problem Solving</h4>
-      <p>Debugging, logical thinking, and implementing solutions efficiently.</p>
-    </div>
-    <div class="skill-card">
-      <h4>🤝 Collaboration</h4>
-      <p>Working with others to create better projects and team-based solutions.</p>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="panel">
+    <h2>Hello, I’m <span>Aaditya Jha</span></h2>
+    <p class="lead">+2 Science (Computer) student — I build clean websites, small robotics projects, and practical solutions. Explore my work and connect with me.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button class="cta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+      <button class="cta secondary" onclick="document.querySelector('#landing').scrollIntoView({behavior:'smooth'})">Explore</button>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<main>
+  <section id="landing" class="panel reveal">
+    <h3 class="section-title">Landing</h3>
+    <p class="lead">Welcome — quick intro and featured strengths.</p>
+    <div class="grid" style="margin-top:12px;">
+      <div class="card"><h4>Responsive Sites</h4><p class="lead">Websites that adapt to all screens.</p></div>
+      <div class="card"><h4>Robotics Basics</h4><p class="lead">Small robotics projects for learning.</p></div>
+      <div class="card"><h4>Problem Solving</h4><p class="lead">C, Python, and algorithmic thinking.</p></div>
+    </div>
+  </section>
+
+  <section id="about" class="panel reveal">
+    <h3 class="section-title">About Me</h3>
+    <p class="lead">I’m Aaditya from Sarlahi, Madhesh Pradesh, Nepal. I study +2 Science (Computer) and enjoy building useful, simple projects that help learning and solve small problems.</p>
+  </section>
+
+  <section id="skills" class="panel reveal">
+    <h3 class="section-title">My Skills</h3>
+    <div class="grid" style="margin-top:12px;">
+      <div class="card"><h4>Web Dev</h4><p>HTML, CSS, JS — responsive design.</p></div>
+      <div class="card"><h4>Programming</h4><p>C, Python — practical projects.</p></div>
+      <div class="card"><h4>Design</h4><p>Clean UI & simple UX.</p></div>
+      <div class="card"><h4>Innovation</h4><p>Small, practical solutions.</p></div>
+    </div>
+  </section>
+
+  <section id="elements" class="panel reveal">
+    <h3 class="section-title">Elements</h3>
+    <div class="grid" style="margin-top:12px;">
+      <div class="card"><h4>Buttons</h4><p>Primary, Secondary, Ghost</p></div>
+      <div class="card"><h4>Cards</h4><p>Rounded, shadowed cards.</p></div>
+      <div class="card"><h4>Forms</h4><p>Contact & login forms integrated with Firebase.</p></div>
+      <div class="card"><h4>Icons</h4><p>Social links & small UI icons.</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="two-col">
+      <div class="panel">
+        <h3 class="section-title">Contact Me</h3>
+        <p class="lead">Send a message — saved to Firebase Firestore.</p>
+        <form id="contactForm">
+          <div class="form-field"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required></div>
+          <div class="form-field"><label>Message</label><textarea name="message" placeholder="Write your message..." required></textarea></div>
+          <div style="display:flex;gap:8px;align-items:center;"><button class="btn" type="submit">Send Message</button><div class="small-muted">I'll reply soon.</div></div>
+        </form>
+
+        <div style="margin-top:14px;">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <div style="min-width:180px;">
+              <h4 style="color:var(--accent2)">Email</h4>
+              <a href="mailto:jhaaaditya00@gmail.com">jhaaaditya00@gmail.com</a>
+            </div>
+            <div style="min-width:160px;">
+              <h4 style="color:var(--accent2)">Phone</h4>
+              <div>(+977 9840688748)</div>
+            </div>
+            <div style="min-width:200px;">
+              <h4 style="color:var(--accent2)">Address</h4>
+              <div>Sarlahi, Madhesh Pradesh, Nepal</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <a href="https://www.facebook.com/share/1D71yckcG2/" target="_blank">Facebook</a> ·
+            <a href="https://www.instagram.com/jha.aaditya_?igsh=MWdyZDFwbXVjb2JkdQ==" target="_blank">Instagram</a> ·
+            <a href="https://wa.me/9779840688748" target="_blank">WhatsApp</a> ·
+            <a href="https://www.tiktok.com/@aadii.tya?_r=1&_t=ZS-91G7TTSMQ1h" target="_blank">TikTok</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="login-box panel">
+        <h3 class="section-title">Quick Login / Register</h3>
+        <p class="small-muted">Use the popup to sign in, or register with a profile picture.</p>
+        <img id="avatarPreview" class="avatar-preview" src="https://via.placeholder.com/96" alt="avatar">
+        <div style="display:flex;gap:8px;margin-bottom:8px;">
+          <button id="showLogin" class="btn" style="flex:1">Open Login</button>
+          <button id="showRegister" class="btn" style="flex:1;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)">Open Register</button>
+        </div>
+        <div id="loginStatus" class="small-muted" style="text-align:center;margin-top:6px;">Not signed in</div>
+      </aside>
+    </div>
+  </section>
+</main>
+
 <footer>
-  <ul class="icons">
-    <li><a href="https://www.facebook.com/share/1D71yckcG2/" target="_blank">Facebook</a></li>
-    <li><a href="https://www.instagram.com/jha.aaditya_?igsh=MWdyZDFwbXVjb2JkdQ==" target="_blank">Instagram</a></li>
-    <li><a href="https://wa.me/9779840688748" target="_blank">WhatsApp</a></li>
-    <li><a href="https://www.tiktok.com/@aadii.tya?_r=1&_t=ZS-91G7TTSMQ1h" target="_blank">TikTok</a></li>
-  </ul>
-  <p>© 2025 Aaditya Jha | Designed & Developed by Aaditya Jha</p>
+  <div>© 2025 Aaditya Jha — Designed & Developed by Aaditya Jha</div>
 </footer>
 
-<!-- ===== FIREBASE LOGIN SCRIPT ===== -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+<!-- LOGIN / REGISTER MODAL (popup) -->
+<div id="modalBackdrop" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h4 id="modalTitle">Login</h4>
 
+    <!-- avatar preview -->
+    <img id="modalAvatar" class="avatar-preview" src="https://via.placeholder.com/96" alt="avatar preview" style="display:none;">
+
+    <!-- tabs -->
+    <div style="display:flex;gap:8px;margin-bottom:12px;">
+      <button id="tabLogin" class="btn" style="flex:1">Login</button>
+      <button id="tabRegister" class="btn" style="flex:1;background:transparent;border:1px solid rgba(255,255,255,0.06)">Register</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="modalLogin">
+      <div class="form-field"><label>Email</label><input id="mLoginEmail" type="email" placeholder="you@example.com"></div>
+      <div class="form-field"><label>Password</label><input id="mLoginPassword" type="password" placeholder="password"></div>
+      <div style="display:flex;gap:8px;">
+        <button id="mLoginBtn" class="btn" style="flex:1">Login</button>
+        <button id="mClose" class="btn-ghost" style="flex:0">Close</button>
+      </div>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="modalRegister" style="display:none;">
+      <div class="form-field"><label>Username</label><input id="mRegUsername" type="text" placeholder="username"></div>
+      <div class="form-field"><label>Email</label><input id="mRegEmail" type="email" placeholder="you@example.com"></div>
+      <div class="form-field"><label>Password</label><input id="mRegPassword" type="password" placeholder="password"></div>
+      <div class="form-field"><label>Profile Picture</label><input id="mRegPic" type="file" accept="image/*"></div>
+      <div style="display:flex;gap:8px;">
+        <button id="mRegisterBtn" class="btn" style="flex:1">Register</button>
+        <button id="mClose2" class="btn-ghost" style="flex:0">Close</button>
+      </div>
+    </div>
+    <div id="modalMessage" class="small-muted" style="margin-top:8px;"></div>
+  </div>
+</div>
+
+<script type="module">
+/* ================== Firebase imports ================== */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getStorage, ref as sRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+/* ================== Firebase config ================== */
 const firebaseConfig = {
   apiKey: "AIzaSyAos3HZUfo49pLQEIwGc2mOlrdErMI95J0",
   authDomain: "aadityajha00.firebaseapp.com",
@@ -110,38 +272,109 @@ const firebaseConfig = {
   messagingSenderId: "953486639095",
   appId: "1:953486639095:web:0e23e9a917c4b6fd27f8f2"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const storage = getStorage(app);
+const db = getFirestore(app);
 
-const loginBtn = document.getElementById('loginBtn');
-const logoutBtn = document.getElementById('logoutBtn');
-const profileSpan = document.getElementById('profile');
-const profileName = document.getElementById('profileName');
+/* ================== UI Elements ================== */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.12});
+revealEls.forEach(el => observer.observe(el));
 
-loginBtn.addEventListener('click', ()=>{
-  const email = prompt("Enter Email");
-  const password = prompt("Enter Password");
-  if(email && password){
-    signInWithEmailAndPassword(auth,email,password)
-    .catch(e=>alert("Login Error: "+e.message));
+/* particles (light decorative) */
+function createParticles(){
+  const hero = document.querySelector('.hero');
+  for(let i=0;i<10;i++){
+    const el = document.createElement('div');
+    el.className='particle';
+    const s = 20 + Math.random()*140;
+    el.style.width = s+'px'; el.style.height = s+'px';
+    el.style.left = Math.random()*110+'%';
+    el.style.top = 60 + Math.random()*30+'%';
+    el.style.background = ['rgba(0,188,212,0.12)','rgba(0,255,255,0.08)','rgba(255,255,255,0.04)'][Math.floor(Math.random()*3)];
+    el.style.opacity = 0.2 + Math.random()*0.6;
+    el.style.transition = transform ${10 + Math.random()*10}s linear;
+    hero.appendChild(el);
+    // animate up
+    setTimeout(()=>{ el.style.transform = translateY(-140vh) translateX(${(Math.random()-0.5)*200}px); }, 50+Math.random()*500);
+  }
+}
+createParticles();
+
+/* NAV active link on scroll */
+const navLinks = document.querySelectorAll('.nav-link');
+function onScroll(){
+  const fromTop = window.scrollY + 90;
+  navLinks.forEach(link=>{
+    const id = link.getAttribute('href');
+    if(!id.startsWith('#')) return;
+    const sec = document.querySelector(id);
+    if(!sec) return;
+    if(sec.offsetTop <= fromTop && sec.offsetTop + sec.offsetHeight > fromTop){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      link.classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* mobile menu */
+const menuToggle = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
+menuToggle?.addEventListener('click', ()=>{
+  if(mobileNav.style.display==='block'){ mobileNav.style.display='none'; return; }
+  let html='';
+  document.querySelectorAll('#mainNav .nav-link').forEach(a=> html+=<a href="${a.getAttribute('href')}" class="mobile-link">${a.textContent}</a>);
+  mobileNav.innerHTML = html; mobileNav.style.display='block';
+  mobileNav.querySelectorAll('.mobile-link').forEach(a=> a.addEventListener('click', ()=> mobileNav.style.display='none'));
+});
+
+/* ================== Contact form -> Firestore ================== */
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', async e=>{
+  e.preventDefault();
+  const data = new FormData(contactForm);
+  try{
+    await addDoc(collection(db,'messages'), { email: data.get('email'), message: data.get('message'), createdAt: serverTimestamp() });
+    alert('✅ Message saved. Thank you!');
+    contactForm.reset();
+  }catch(err){
+    console.error(err); alert('Error: '+err.message);
   }
 });
 
-logoutBtn.addEventListener('click', ()=> signOut(auth));
+/* ================== Modal login/register ================== */
+const modalBackdrop = document.getElementById('modalBackdrop');
+const mLoginBtn = document.getElementById('mLoginBtn'), mRegisterBtn = document.getElementById('mRegisterBtn');
+const mClose = document.getElementById('mClose'), mClose2 = document.getElementById('mClose2');
+const openLogin = document.getElementById('openLogin');
+const tabLogin = document.getElementById('tabLogin'), tabRegister = document.getElementById('tabRegister');
+const modalLogin = document.getElementById('modalLogin'), modalRegister = document.getElementById('modalRegister');
+const modalMessage = document.getElementById('modalMessage');
+const avatarPreview = document.getElementById('avatarPreview');
+const modalAvatar = document.getElementById('modalAvatar');
 
-onAuthStateChanged(auth, user=>{
-  if(user){
-    loginBtn.style.display="none";
-    profileSpan.style.display="flex";
-    profileName.textContent = user.displayName || user.email;
-    profileSpan.querySelector('img').src = user.photoURL || "https://via.placeholder.com/40";
-  } else {
-    loginBtn.style.display="inline-block";
-    profileSpan.style.display="none";
-  }
-});
-</script>
-
-</body>
-</html>
+openLogin.addEventListener('click', ()=> openModal('login'));
+document.getElementById('showLogin').addEventListener('click', ()=> openModal('login'));
+document.getElementById('showRegister').addEventListener('click', ()=> openModal('register'));
+tabLogin.addEventListener('click', ()=> setModalTab('login'));
+tabRegister.addEventListener('click', ()=> setModalTab('register'));
+mClose.addEventListener('click', closeModal);
+mClose2.addEventListener('click', closeModal);
+function openModal(tab='login'){
+  modalBackdrop.classList.add('open');
+  modalBackdrop.style.display='flex';
+  setTimeout(()=> modalBackdrop.classList.add('open'), 10);
+  setModalTab(tab);
+}
+function closeModal(){
+  modalBackdrop.classList.remove('open');
+  setTimeout(()=> modalBackdrop.style.display='none', 220);
+  modalMessage.textContent = '';
+}
+function setModalTab(tab){
+  if(tab==='login'){ modalLogin.style.display='block'; modalRegister.style.display='none'; modalAvatar.style.display='none'; document.getElement
