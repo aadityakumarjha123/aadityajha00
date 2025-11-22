@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Aaditya Jha</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="landing.html">Landing</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="elements.html">Elements</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="panel reveal">
+    <h3 class="section-title">Contact Me</h3>
+    <p class="lead">Send a message — saved to Firebase Firestore.</p>
+    
+    <form id="contactForm">
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea name="message" placeholder="Write your message..." required></textarea>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="btn" type="submit">Send Message</button>
+        <div class="small-muted">I'll reply soon.</div>
+      </div>
+    </form>
+
+    <div style="margin-top:14px;">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div style="min-width:180px;">
+          <h4 style="color:var(--accent2)">Email</h4>
+          <a href="mailto:jhaaaditya00@gmail.com">jhaaaditya00@gmail.com</a>
+        </div>
+        <div style="min-width:160px;">
+          <h4 style="color:var(--accent2)">Phone</h4>
+          <div>(+977 9840688748)</div>
+        </div>
+        <div style="min-width:200px;">
+          <h4 style="color:var(--accent2)">Address</h4>
+          <div>Sarlahi, Madhesh Pradesh, Nepal</div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <a href="https://www.facebook.com/share/1D71yckcG2/" target="_blank">Facebook</a> ·
+        <a href="https://www.instagram.com/jha.aaditya_?igsh=MWdyZDFwbXVjb2JkdQ==" target="_blank">Instagram</a> ·
+        <a href="https://wa.me/9779840688748" target="_blank">WhatsApp</a> ·
+        <a href="https://www.tiktok.com/@aadii.tya?_r=1&_t=ZS-91G7TTSMQ1h" target="_blank">TikTok</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
