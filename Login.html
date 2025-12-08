@@ -3,31 +3,616 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login - Aaditya Jha</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg-dark:#0a0e27; --bg-mid:#1a1f3a; --accent1:#00d8ff; --accent2:#6a00ff; 
+            --accent3:#ff006e; --accent4:#ffd60a; --muted:rgba(230,238,246,0.85);
+            --glass:rgba(255,255,255,0.05); --card:rgba(255,255,255,0.04);
+            --radius:16px; --transition:400ms cubic-bezier(.2,.9,.3,1);
+        }
+        *{box-sizing:border-box; margin:0; padding:0}
+        html{scroll-behavior:smooth}
+        body{
+            font-family:Inter,system-ui,-apple-system,sans-serif;
+            background:linear-gradient(135deg,#0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+            color:var(--muted); line-height:1.6; min-height:100vh;
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+            display:flex; align-items:center; justify-content:center;
+            padding:20px; position:relative; overflow:hidden;
+        }
+
+        /* Animated background */
+        body::before{
+            content:''; position:fixed; inset:0; z-index:0;
+            background:radial-gradient(circle at 20% 50%, rgba(106,0,255,0.15) 0%, transparent 50%),
+                       radial-gradient(circle at 80% 80%, rgba(0,216,255,0.15) 0%, transparent 50%),
+                       radial-gradient(circle at 40% 90%, rgba(255,0,110,0.1) 0%, transparent 50%);
+            animation:bgShift 20s ease infinite;
+        }
+        @keyframes bgShift{
+            0%, 100%{opacity:1; transform:scale(1)}
+            50%{opacity:0.8; transform:scale(1.1)}
+        }
+
+        /* Floating particles */
+        #particles{
+            position:fixed; inset:0; z-index:1; pointer-events:none;
+        }
+
+        /* Container */
+        .container{
+            position:relative; z-index:2; width:100%; max-width:900px;
+            display:grid; grid-template-columns:1fr 1fr; gap:0;
+            background:rgba(10,14,39,0.6); backdrop-filter:blur(20px);
+            border-radius:24px; overflow:hidden;
+            border:1px solid rgba(255,255,255,0.1);
+            box-shadow:0 30px 90px rgba(0,0,0,0.5);
+            animation:fadeInUp 0.8s ease;
+        }
+
+        /* Left side - Branding */
+        .branding{
+            background:linear-gradient(135deg, rgba(0,216,255,0.15), rgba(106,0,255,0.15));
+            padding:60px 40px; display:flex; flex-direction:column;
+            justify-content:center; align-items:center; text-align:center;
+            border-right:1px solid rgba(255,255,255,0.08);
+            position:relative; overflow:hidden;
+        }
+        .branding::before{
+            content:''; position:absolute; inset:0;
+            background:repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px);
+        }
+        .brand-content{position:relative; z-index:2}
+        .brand-logo{
+            width:80px; height:80px; border-radius:20px;
+            background:linear-gradient(135deg, var(--accent1), var(--accent2));
+            display:flex; align-items:center; justify-content:center;
+            font-size:40px; font-weight:900; margin-bottom:24px;
+            box-shadow:0 12px 40px rgba(106,0,255,0.5);
+            animation:float 6s ease-in-out infinite;
+        }
+        @keyframes float{
+            0%, 100%{transform:translateY(0)}
+            50%{transform:translateY(-15px)}
+        }
+        .branding h1{
+            font-size:32px; font-weight:900; color:#fff; margin-bottom:12px;
+            background:linear-gradient(135deg, #fff, var(--accent1));
+            -webkit-background-clip:text; background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+        .branding p{
+            font-size:15px; color:rgba(230,238,246,0.7); line-height:1.6;
+        }
+        .branding .features{
+            margin-top:32px; display:flex; flex-direction:column; gap:16px;
+        }
+        .feature-item{
+            display:flex; align-items:center; gap:12px;
+            color:rgba(230,238,246,0.8);
+        }
+        .feature-icon{
+            width:36px; height:36px; border-radius:8px;
+            background:rgba(0,216,255,0.2); display:flex;
+            align-items:center; justify-content:center; font-size:18px;
+        }
+
+        /* Right side - Form */
+        .login-box{
+            padding:60px 40px; display:flex; flex-direction:column;
+            justify-content:center;
+        }
+        .form-header{margin-bottom:32px}
+        .form-header h2{
+            font-size:32px; font-weight:900; color:#fff; margin-bottom:8px;
+        }
+        .form-header p{
+            font-size:15px; color:rgba(230,238,246,0.6);
+        }
+
+        /* Tabs */
+        .tabs{
+            display:flex; gap:8px; margin-bottom:32px;
+            background:rgba(255,255,255,0.03); padding:6px;
+            border-radius:12px; border:1px solid rgba(255,255,255,0.05);
+        }
+        .tab{
+            flex:1; padding:12px; border-radius:8px; border:none;
+            background:transparent; color:var(--muted); font-weight:700;
+            cursor:pointer; transition:all var(--transition); font-size:15px;
+        }
+        .tab.active{
+            background:linear-gradient(135deg, var(--accent1), var(--accent2));
+            color:#0a0e27; box-shadow:0 4px 20px rgba(0,216,255,0.3);
+        }
+
+        /* Form */
+        form{display:flex; flex-direction:column; gap:20px}
+        .input-box{display:flex; flex-direction:column; gap:8px}
+        .input-box label{
+            font-weight:600; color:rgba(230,238,246,0.9); font-size:14px;
+        }
+        .input-box input{
+            padding:14px 18px; border-radius:12px;
+            border:1px solid rgba(255,255,255,0.1);
+            background:rgba(255,255,255,0.03);
+            color:var(--muted); font-size:15px; font-family:inherit;
+            transition:all var(--transition);
+        }
+        .input-box input:focus{
+            outline:none; border-color:var(--accent1);
+            box-shadow:0 0 0 3px rgba(0,216,255,0.1);
+            background:rgba(255,255,255,0.05);
+        }
+        .input-box input::placeholder{color:rgba(230,238,246,0.4)}
+
+        /* File input for avatar */
+        .file-input{
+            padding:14px 18px; border-radius:12px;
+            border:1px solid rgba(255,255,255,0.1);
+            background:rgba(255,255,255,0.03);
+            color:var(--muted); font-size:14px;
+            cursor:pointer; transition:all var(--transition);
+        }
+        .file-input:hover{
+            border-color:var(--accent1);
+            background:rgba(255,255,255,0.05);
+        }
+
+        /* Forgot password */
+        .forgot-password{
+            text-align:right; margin-top:-8px;
+        }
+        .forgot-password a{
+            color:var(--accent1); text-decoration:none; font-size:14px;
+            font-weight:600; transition:color var(--transition);
+        }
+        .forgot-password a:hover{color:#fff}
+
+        /* Button */
+        .btn{
+            padding:16px 32px; border-radius:12px; border:none;
+            cursor:pointer; font-weight:700; font-size:15px; font-family:inherit;
+            background:linear-gradient(135deg, var(--accent1), var(--accent2));
+            color:#0a0e27; box-shadow:0 8px 30px rgba(106,0,255,0.4);
+            transition:all var(--transition); position:relative; overflow:hidden;
+            margin-top:8px;
+        }
+        .btn::before{
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            opacity:0; transition:opacity var(--transition);
+        }
+        .btn:hover::before{opacity:1}
+        .btn:hover{
+            transform:translateY(-3px);
+            box-shadow:0 12px 40px rgba(106,0,255,0.6);
+        }
+        .btn:disabled{
+            opacity:0.5; cursor:not-allowed; transform:none;
+        }
+
+        /* Divider */
+        .divider{
+            display:flex; align-items:center; gap:12px; margin:24px 0;
+        }
+        .divider::before, .divider::after{
+            content:''; flex:1; height:1px;
+            background:rgba(255,255,255,0.1);
+        }
+        .divider span{
+            font-size:13px; color:rgba(230,238,246,0.5);
+        }
+
+        /* Social login */
+        .social-login{display:flex; gap:12px}
+        .social-btn{
+            flex:1; padding:12px; border-radius:12px;
+            border:1px solid rgba(255,255,255,0.1);
+            background:rgba(255,255,255,0.03);
+            color:var(--muted); cursor:pointer;
+            transition:all var(--transition); font-size:20px;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .social-btn:hover{
+            border-color:var(--accent1);
+            background:rgba(0,216,255,0.1);
+            transform:translateY(-2px);
+        }
+
+        /* Back to home */
+        .back-home{
+            position:absolute; top:24px; left:24px; z-index:10;
+        }
+        .back-home a{
+            display:flex; align-items:center; gap:8px;
+            padding:10px 20px; border-radius:12px;
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.1);
+            color:var(--muted); text-decoration:none;
+            font-weight:600; transition:all var(--transition);
+        }
+        .back-home a:hover{
+            background:rgba(0,216,255,0.1);
+            border-color:var(--accent1);
+            color:#fff; transform:translateX(-4px);
+        }
+
+        /* Toast */
+        .toast{
+            position:fixed; top:24px; right:24px; z-index:300;
+            background:rgba(15,22,41,0.95); backdrop-filter:blur(12px);
+            border:1px solid rgba(255,255,255,0.1); border-radius:12px;
+            padding:16px 24px; box-shadow:0 8px 32px rgba(0,0,0,0.4);
+            color:#fff; font-weight:600; display:none;
+            animation:slideInRight 0.4s ease;
+        }
+        .toast.active{display:block}
+        .toast.success{border-left:4px solid var(--accent1)}
+        .toast.error{border-left:4px solid var(--accent3)}
+
+        /* Hidden class */
+        .hidden{display:none !important}
+
+        /* Animations */
+        @keyframes fadeInUp{
+            from{opacity:0; transform:translateY(40px) scale(0.95)}
+            to{opacity:1; transform:translateY(0) scale(1)}
+        }
+        @keyframes slideInRight{
+            from{opacity:0; transform:translateX(100px)}
+            to{opacity:1; transform:translateX(0)}
+        }
+
+        /* Responsive */
+        @media (max-width:768px){
+            .container{
+                grid-template-columns:1fr;
+                max-width:450px;
+            }
+            .branding{
+                padding:40px 30px;
+                border-right:none;
+                border-bottom:1px solid rgba(255,255,255,0.08);
+            }
+            .branding .features{display:none}
+            .login-box{padding:40px 30px}
+        }
+    </style>
 </head>
 <body>
+    <!-- Particles Canvas -->
+    <canvas id="particles"></canvas>
 
+    <!-- Back to Home -->
+    <div class="back-home">
+        <a href="index.html">
+            <span>←</span>
+            <span>Back to Home</span>
+        </a>
+    </div>
+
+    <!-- Container -->
     <div class="container">
+        <!-- Left Side - Branding -->
+        <div class="branding">
+            <div class="brand-content">
+                <div class="brand-logo">AJ</div>
+                <h1>Aaditya Jha</h1>
+                <p>Join our community and unlock exclusive features, save your preferences, and connect with like-minded developers.</p>
+                
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">✨</div>
+                        <span>Personalized Dashboard</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💾</div>
+                        <span>Save Your Projects</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔔</div>
+                        <span>Get Updates</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Login Form -->
         <div class="login-box">
-            <h2>Welcome Back</h2>
+            <div class="form-header">
+                <h2>Welcome Back</h2>
+                <p>Login or create a new account</p>
+            </div>
 
-            <form>
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" id="loginTab">Login</button>
+                <button class="tab" id="registerTab">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm">
                 <div class="input-box">
-                    <label>Username:</label>
-                    <input type="text" placeholder="Enter username">
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com" required>
                 </div>
-
                 <div class="input-box">
-                    <label>Password:</label>
-                    <input type="password" placeholder="Enter password">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
                 </div>
-
-                <button type="submit" class="btn">SIGN IN</button>
+                <div class="forgot-password">
+                    <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">
+                    <span id="loginBtnText">SIGN IN</span>
+                </button>
             </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="hidden">
+                <div class="input-box">
+                    <label>Display Name</label>
+                    <input type="text" id="registerName" placeholder="John Doe" required>
+                </div>
+                <div class="input-box">
+                    <label>Email Address</label>
+                    <input type="email" id="registerEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="input-box">
+                    <label>Password</label>
+                    <input type="password" id="registerPassword" placeholder="••••••••" required>
+                </div>
+                <div class="input-box">
+                    <label>Profile Picture (Optional)</label>
+                    <input type="file" id="registerAvatar" class="file-input" accept="image/*">
+                </div>
+                <button type="submit" class="btn">
+                    <span id="registerBtnText">CREATE ACCOUNT</span>
+                </button>
+            </form>
+
+            <!-- Social Login -->
+            <div class="divider">
+                <span>Or continue with</span>
+            </div>
+            <div class="social-login">
+                <button class="social-btn" title="Google">🔵</button>
+                <button class="social-btn" title="Facebook">📘</button>
+                <button class="social-btn" title="GitHub">🐙</button>
+            </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Firebase & Scripts -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword,
+            updateProfile,
+            sendPasswordResetEmail,
+            onAuthStateChanged,
+            GoogleAuthProvider,
+            signInWithPopup
+        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        import { 
+            getStorage, 
+            ref as storageRef, 
+            uploadBytes, 
+            getDownloadURL 
+        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyAos3HZUfo49pLQEIwGc2mOlrdErMI95J0",
+            authDomain: "aadityajha00.firebaseapp.com",
+            projectId: "aadityajha00",
+            storageBucket: "aadityajha00.firebasestorage.app",
+            messagingSenderId: "953486639095",
+            appId: "1:953486639095:web:0e23e9a917c4b6fd27f8f2"
+        };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const storage = getStorage(app);
+
+        // Toast notification
+        const toastEl = document.getElementById('toast');
+        function showToast(msg, type='success') {
+            toastEl.textContent = msg;
+            toastEl.className = `toast active ${type}`;
+            setTimeout(() => toastEl.classList.remove('active'), 4000);
+        }
+
+        // Tab switching
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        });
+
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+
+        // Login
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const btn = document.getElementById('loginBtnText');
+
+            btn.textContent = 'SIGNING IN...';
+            loginForm.querySelector('.btn').disabled = true;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                showToast('✅ Login successful! Redirecting...', 'success');
+                setTimeout(() => window.location.href = 'index.html', 1500);
+            } catch (error) {
+                console.error('Login error:', error);
+                showToast(`❌ ${error.message}`, 'error');
+            } finally {
+                btn.textContent = 'SIGN IN';
+                loginForm.querySelector('.btn').disabled = false;
+            }
+        });
+
+        // Register
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+            const avatarFile = document.getElementById('registerAvatar').files[0];
+            const btn = document.getElementById('registerBtnText');
+
+            btn.textContent = 'CREATING ACCOUNT...';
+            registerForm.querySelector('.btn').disabled = true;
+
+            try {
+                // Create user
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                let photoURL = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=00d8ff&color=fff&size=200`;
+
+                // Upload avatar if provided
+                if (avatarFile) {
+                    btn.textContent = 'UPLOADING AVATAR...';
+                    const avatarRef = storageRef(storage, `avatars/${user.uid}/${avatarFile.name}`);
+                    await uploadBytes(avatarRef, avatarFile);
+                    photoURL = await getDownloadURL(avatarRef);
+                }
+
+                // Update profile
+                await updateProfile(user, {
+                    displayName: name,
+                    photoURL: photoURL
+                });
+
+                showToast('✅ Account created successfully! Redirecting...', 'success');
+                setTimeout(() => window.location.href = 'index.html', 1500);
+            } catch (error) {
+                console.error('Registration error:', error);
+                showToast(`❌ ${error.message}`, 'error');
+            } finally {
+                btn.textContent = 'CREATE ACCOUNT';
+                registerForm.querySelector('.btn').disabled = false;
+            }
+        });
+
+        // Forgot Password
+        document.getElementById('forgotPasswordLink').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            
+            if (!email) {
+                showToast('⚠️ Please enter your email address first', 'error');
+                return;
+            }
+
+            try {
+                await sendPasswordResetEmail(auth, email);
+                showToast('✅ Password reset email sent! Check your inbox.', 'success');
+            } catch (error) {
+                console.error('Password reset error:', error);
+                showToast(`❌ ${error.message}`, 'error');
+            }
+        });
+
+        // Google Sign In
+        document.querySelector('.social-btn[title="Google"]').addEventListener('click', async () => {
+            const provider = new GoogleAuthProvider();
+            try {
+                await signInWithPopup(auth, provider);
+                showToast('✅ Signed in with Google! Redirecting...', 'success');
+                setTimeout(() => window.location.href = 'index.html', 1500);
+            } catch (error) {
+                console.error('Google sign in error:', error);
+                showToast(`❌ ${error.message}`, 'error');
+            }
+        });
+
+        // Check if already logged in
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is already logged in, redirect to home
+                // Comment this out if you want to allow logged-in users to see the login page
+                // window.location.href = 'index.html';
+            }
+        });
+
+        // Particles animation
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function createParticles() {
+            particles = [];
+            const count = Math.min(60, Math.floor(window.innerWidth / 20));
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 + 0.5,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    color: `hsla(${180 + Math.random() * 60}, 70%, 60%, ${Math.random() * 0.3 + 0.1})`
+                });
+            }
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+            });
+
+            requestAnimationFrame(drawParticles);
+        }
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+
+        resizeCanvas();
+        createParticles();
+        drawParticles();
+    </script>
 </body>
-  </html>
+</html>
