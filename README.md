@@ -25,11 +25,3 @@ It serves as my online portfolio and includes:
 - Showcases robotics and computer projects
 - Hosted on **GitHub Pages**
 
----
-
-## ⚙️ Installation & Setup
-To run this website locally:
-
-1. Clone the repository:
-   ```bash
-   git clone https://aadityakumarjha.github.io
