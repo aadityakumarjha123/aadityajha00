@@ -2,16 +2,16 @@
                    LICENSE AGREEMENT
 ==========================================================
 
-Website Name: Aaditya Jha 00
-Website URL: https://aadityajha00.github.io
-Author: Aaditya Jha
+Website Name: Aaditya Kumar Jha
+Website URL: https://aadityakumarjha.github.io
+Author: Aaditya Kumar Jha
 Location: Sarlahi, Madhesh Pradesh, Nepal
-Last Updated: November 2025
+Last Updated: December 2025
 
 ----------------------------------------------------------
 📜 COPYRIGHT NOTICE
 ----------------------------------------------------------
-Copyright © 2025 Aaditya Jha. All rights reserved.
+Copyright © 2025 Aaditya Kumar Jha. All rights reserved.
 
 This website, including its code, design, and content, is 
 protected under international copyright laws. 
@@ -25,7 +25,7 @@ without the prior written permission of the author.
 ----------------------------------------------------------
 You are free to:
 • View, browse, and use this website for personal purposes.
-• Share the website link (https://aadityajha00.github.io) publicly.
+• Share the website link (https://aadityakumarjha.github.io) publicly.
 
 You may NOT:
 • Copy or redistribute any code or content as your own.
@@ -39,14 +39,14 @@ If you wish to use any portion of this website’s code or design
 for educational or non-commercial purposes, you must provide 
 proper credit with the following text:
 
-   “Website designed and developed by Aaditya Jha 
-    (https://aadityajha00.github.io)”
+   “Website designed and developed by Aaditya Kumar Jha 
+    (https://aadityakumarjha.github.io)”
 
 ----------------------------------------------------------
 📩 CONTACT
 ----------------------------------------------------------
 For permissions, inquiries, or collaboration, contact me via:
-• Website Contact Form: https://aadityajha00.github.io/login.html
+• Website Contact Form: https://aadityakumarjha.github.io
 • Email: (available through contact form)
 
 ----------------------------------------------------------
@@ -68,4 +68,5 @@ damages, or other liability arising from the use of this website.
 ==========================================================
 End of License Agreement
 ==========================================================
+
 
