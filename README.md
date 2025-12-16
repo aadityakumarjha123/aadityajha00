@@ -3,7 +3,7 @@
 Welcome to the repository for my personal website!  
 This site showcases my projects, interests, and background as a student passionate about **Robotics, Web Development, and Science**.
 
-🔗 **Live Website:** [aadityajha00.github.io/aadityakumarjha.com](https://aadityajha00.github.io/aadityakumarjha.com/)
+🔗 **Live Website:** [aadityajha00.github.io/aadityakumarjha.com](https://aadityakumarjha.github.io/)
 
 ---
 
