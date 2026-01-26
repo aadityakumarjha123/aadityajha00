@@ -3,10 +3,10 @@
 ==========================================================
 
 Website Name: Aaditya Kumar Jha
-Website URL: https://aadityakumarjha.github.io
+Website URL: https://aadityakumarjha123.github.io
 Author: Aaditya Kumar Jha
 Location: Sarlahi, Madhesh Pradesh, Nepal
-Last Updated: December 2025
+Last Updated: January 2026
 
 ----------------------------------------------------------
 📜 COPYRIGHT NOTICE
@@ -25,7 +25,7 @@ without the prior written permission of the author.
 ----------------------------------------------------------
 You are free to:
 • View, browse, and use this website for personal purposes.
-• Share the website link (https://aadityakumarjha.github.io) publicly.
+• Share the website link (https://aadityakumarjha123.github.io) publicly.
 
 You may NOT:
 • Copy or redistribute any code or content as your own.
@@ -40,13 +40,13 @@ for educational or non-commercial purposes, you must provide
 proper credit with the following text:
 
    “Website designed and developed by Aaditya Kumar Jha 
-    (https://aadityakumarjha.github.io)”
+    (https://aadityakumarjha123.github.io)”
 
 ----------------------------------------------------------
 📩 CONTACT
 ----------------------------------------------------------
 For permissions, inquiries, or collaboration, contact me via:
-• Website Contact Form: https://aadityakumarjha.github.io
+• Website Contact Form: https://aadityakumarjha123.github.io
 • Email: (available through contact form)
 
 ----------------------------------------------------------
@@ -68,5 +68,6 @@ damages, or other liability arising from the use of this website.
 ==========================================================
 End of License Agreement
 ==========================================================
+
 
 
