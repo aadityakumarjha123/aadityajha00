@@ -22,35 +22,7 @@
       --max:1200px;
     }
 
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:Inter,system-ui,sans-serif;
-      background:#0a0e27;
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
-      position:relative;
-    }
-    
-    /* Animated background gradient */
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background:linear-gradient(135deg,#0a0e27,#1a1f3a,#0f1629);
-      z-index:-2;
-    }
-    
-    /* Animated particles */
-    .particles{
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      pointer-events:none;
-    }
-    
-    a{text-decoration:none;color:inherit}
-
+  
     /* HEADER */
     header{
       position:sticky;top:0;z-index:100;
@@ -59,9 +31,6 @@
       border-bottom:1px solid rgba(255,255,255,.08);
       animation:slideDown .6s ease;
     }
-    
-    
-  
 
     /* CONTACT SECTION */
     .contact-container{
